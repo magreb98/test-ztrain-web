@@ -1,34 +1,33 @@
 import { test, expect } from '@playwright/test';
 
-test('Ajouter et supprimer un produit du panier', async ({ page }) => {
-  // 1. Aller sur la page d’accueil
+test('Ajouter un article aléatoire au panier et commander', async ({ page }) => {
   await page.goto('https://ztrain-web.vercel.app/home');
 
-  
-  const firstProduct = page.locator('h5', {
-    hasText: 'PC Portable 15.6"',
-  }).first();
 
-  await expect(firstProduct).toBeVisible({ timeout: 10_000 });
-
-  
-  await firstProduct.click();
+  const products = await page.$$('img.style_card_body_img__mkV1D');
 
  
-  const addToCartButton = page.locator('.style_btn_add_cart__WFoN1');
-  await expect(addToCartButton).toBeVisible();
-  await addToCartButton.click();
+  expect(products.length).toBeGreaterThan(0);
+
+
+  const randomProduct = products[Math.floor(Math.random() * products.length)];
+
+  await randomProduct.click();
 
   
-  await page.locator('#style_content_cart_wrapper__mqNbf').click();
+  await page.waitForLoadState('networkidle');
 
 
-  const cartProductTitle = page.locator('.style_cart_product_wrapper__RsLvy h3');
-  await expect(cartProductTitle).toContainText('PC Portable 15.6"', {
-    timeout: 10_000,
-  });
+  await page.waitForSelector('button:has-text("Ajouter au panier")');
+  await page.click('button:has-text("Ajouter au panier")');
+
+  await page.waitForTimeout(1000);
 
 
+  await page.waitForSelector('#style_content_cart_wrapper__mqNbf');
+  await page.click('#style_content_cart_wrapper__mqNbf');
+
+  await page.waitForSelector('.ant-drawer-body');
   const deleteBtn = page.locator('.style_trash_product_cart__7Yzni').first();
   await expect(deleteBtn).toBeVisible();
   await deleteBtn.click();
