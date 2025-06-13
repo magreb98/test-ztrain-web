@@ -35,5 +35,5 @@ test('Ajouter et supprimer un produit du panier', async ({ page }) => {
 
   
   const emptyMessage = page.locator('text=Votre panier est vide');
-  await expect(emptyMessage).toBeVisible({ timeout: 5_000 });
+  await expect(emptyMessage).toBeVisible({ timeout: 5_000 })
 });
