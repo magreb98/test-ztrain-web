@@ -1,0 +1,44 @@
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "Z-Train":
+    - /url: /home
+    - heading "Z-Train" [level=1]
+  - combobox:
+    - option "Toutes les categories" [selected]
+  - textbox "Rechecher un produit"
+  - img
+  - img
+  - text: "0"
+  - img "user"
+- banner:
+  - heading "Normal d'être impatient." [level=1]
+  - paragraph: Achetez en ligne et faites-vous livrer en moins de 2H gratuitement en magasin.
+- img
+- heading "Ordinateurs" [level=3]
+- img
+- heading "Vetements" [level=3]
+- img
+- heading "Telephone" [level=3]
+- img
+- heading "Chaussures" [level=3]
+- main:
+  - heading "LES PRODUITS" [level=2]
+- contentinfo:
+  - link "Z-Train":
+    - /url: /home
+    - heading "Z-Train" [level=1]
+  - paragraph: Pour les courses ou le shopping, un vaste choix de produits à petit prix livrés à domicile, en magasin, en consigne ou en point relais.
+  - heading "Our society" [level=5]
+  - text: About Contact our Product Join us
+  - link "FAQ":
+    - /url: /faq
+  - text: CGV Terms of services
+  - link "Privacy policy":
+    - /url: /privacy-policy
+  - heading "Contact us" [level=5]
+  - text: contact@ztrain.com Moulin de la Vierge (Rue du) + 33 656 78 78 41
+  - heading "Follow us" [level=5]
+- alert
+```
